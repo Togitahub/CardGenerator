@@ -1,27 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="styles.css">
-		<title>Poker Card Generator</title>
-	</head>
-	<body>
-		<div class="card-container">
-			<h1>Hola Mei ❤️ que linda te ves ✨</h1>
-			<div class="card">
-				<div id="top-symbol" class="card-top-symbol"></div>
-				<p id="card-number"></p>
-                <div id="bottom-symbol" class="card-bottom-symbol"></div>
-			</div>
-            <div>
-                <button onclick="randomCard()" class="card-buttons">GENERAR CARTA</button>
-            </div>
-            <!-- <div>
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="styles.css">
+	<title>Poker Card Generator</title>
+</head>
+
+<body>
+	<div class="card-container hide">
+		<div class="card">
+			<div id="top-symbol" class="card-top-symbol"></div>
+			<p id="card-number"></p>
+			<div id="bottom-symbol" class="card-bottom-symbol"></div>
+		</div>
+		<div>
+			<button onclick="randomCard()" class="card-buttons">GENERAR CARTA</button>
+		</div>
+		<!-- <div>
                 <button onclick="setTimer()" class="card-buttons">TEMPORIZADOR ON</button>
                 <button onclick="stopTimer()" class="card-buttons">TEMPORIZADOR OFF</button>
             </div> -->
+	</div>
+	<div class="description-container">
+		<h1>Hola Mei, bienvenida <br> ♥ Antes que nada, que linda te ves ♥</h1>
+		<div class="description">
+			<h2>Para continuar, lee las instrucciones, por favor</h2>
+			<ol>
+				<li>Al dar clic en continuar (no le des a continuar aún), vas a ver una carta de póker.</li>
+				<li>Debajo de esa carta vas a ver un botón que dice "Generar carta".</li>
+				<li>Haz clic en ese botón y se te va a generar una carta, la cual puedes escribir o memorizar.</li>
+				<li>Por último, genera una carta nueva e igual puedes escribirla o memorizarla.</li>
+				<li>Una vez estés lista con las dos cartas, escríbelas en nuestra conversación, por favor.</li>
+				<li>Ahora sí, ya le puedes dar click al boton de continuar jaja</li>
+			</ol>
 		</div>
-		<script src="main.js"></script>
-	</body>
+		<button onclick="continueGame()" class="card-buttons">CONTINUAR</button>
+	</div>
+	<script src="main.js"></script>
+</body>
+
 </html>

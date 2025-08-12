@@ -2,7 +2,7 @@ const indexes = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K
 const symbols = ["♦", "♠", "♥", "♣"];
 let timer;
 
-window.onload = randomCard;
+// window.onload = randomCard;
 
 //*---------------------------- FUNCIONES AUXILIARES ----------------------------*//
 
@@ -51,4 +51,12 @@ function cardAnimation() {
         {duration: 1200, iterations: 1}
     );
     cardAnimate.play();
+}
+
+function continueGame() {
+    let description = document.querySelector(".description-container");
+    let cardGame = document.querySelector(".card-container");
+
+    description.classList.add("hide");
+    cardGame.classList.remove("hide");
 }
