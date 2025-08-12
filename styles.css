@@ -1,35 +1,52 @@
 :root {
 	--font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-    --border-radius: 9px;
+	--border-radius: 9px;
+}
+
+* {
+	box-sizing: border-box;
 }
 
 body {
 	margin: 0;
+	padding: 10px;
 	color: white;
-    overflow: hidden;
+	overflow-x: hidden;
 	font-family: var(--font-family);
 	background-color: rgb(255, 165, 0);
+	min-height: 100vh;
 }
 
 h1 {
 	text-align: center;
+	font-size: clamp(1.5rem, 4vw, 2.5rem);
+	margin: 20px 10px;
+	line-height: 1.2;
+}
+
+h2 {
+	font-size: clamp(1.2rem, 3vw, 1.8rem);
+	text-align: center;
+	margin: 20px 10px;
 }
 
 /*-------------------------------------------------- CARD STYLES ----------------------------------------------------*/
 
 .card-container {
-	height: 100vh;
-
+	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-
-	margin-top: 25px;
+	justify-content: center;
+	padding: 20px;
+	gap: 20px;
 }
 
 .card {
-	height: 75%;
-	width: 25%;
+	width: min(90vw, 300px);
+	height: min(70vh, 420px);
+	max-width: 350px;
+	max-height: 500px;
 
 	display: grid;
 	place-items: center;
@@ -37,12 +54,15 @@ h1 {
 
 	text-align: center;
 	border-radius: var(--border-radius);
-	background-color: transparent;
-	box-shadow: 0px 0px 13px rgba(0, 0, 0, 0.25);
+	background-color: white;
+	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+	color: black;
 }
 
 .card p {
-	font-size: 10em;
+	font-size: clamp(3rem, 12vw, 8rem);
+	margin: 0;
+	font-weight: bold;
 }
 
 /*----------------------------------------------------------------------------------------------------------------------*/
@@ -52,17 +72,19 @@ h1 {
 .card-top-symbol,
 .card-bottom-symbol {
 	position: absolute;
-	font-size: 8em;
+	font-size: clamp(2rem, 8vw, 5rem);
+	font-weight: bold;
 }
 
 .card-top-symbol {
-	top: -15px;
-	left: 15px;
+	top: clamp(5px, 2vw, 15px);
+	left: clamp(5px, 2vw, 15px);
 }
 
 .card-bottom-symbol {
-	bottom: -15px;
-	right: 15px;
+	bottom: clamp(5px, 2vw, 15px);
+	right: clamp(5px, 2vw, 15px);
+	transform: rotate(180deg);
 }
 
 /* Esta clase se llama desde el main.js */
@@ -76,46 +98,199 @@ h1 {
 
 .card-buttons {
 	cursor: pointer;
-	margin-top: 15px;
-	padding: 10px;
+	padding: clamp(8px, 2vw, 15px) clamp(15px, 4vw, 25px);
+	margin: 10px;
 
+	border: 2px solid white;
 	border-radius: var(--border-radius);
 	background-color: transparent;
+	color: white;
 
-	font-size: 18px;
+	font-size: clamp(14px, 3vw, 18px);
 	font-family: var(--font-family);
-    transition: color 800ms, border-color 800ms, background-color 800ms;
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+
+	transition: all 300ms ease;
+
+	/* Mejor experiencia táctil en móviles */
+	touch-action: manipulation;
+	-webkit-tap-highlight-color: transparent;
 }
 
-.card-buttons:hover, .card-buttons:focus {
-    color: antiquewhite;
-    border-color: antiquewhite;
-    background-color: black;
+.card-buttons:hover,
+.card-buttons:focus,
+.card-buttons:active {
+	color: rgb(255, 165, 0);
+	border-color: white;
+	background-color: white;
+	transform: translateY(-2px);
+	box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 /*----------------------------------------------------------------------------------------------------------------------*/
 
+/*-------------------------------------------------- DESCRIPTION STYLES ----------------------------------------------------*/
+
 .description-container {
 	display: flex;
 	flex-direction: column;
-	align-items: center
+	align-items: center;
+	padding: 20px;
+	min-height: 100vh;
+	justify-content: center;
 }
 
 .description {
-	width: 750px;
+	width: min(95vw, 750px);
+	max-width: 800px;
+	padding: clamp(20px, 4vw, 40px);
 
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 
-	border-radius: 25px;
-	box-shadow: 0px 0px 13px rgba(0, 0, 0, 0.25);
+	border-radius: clamp(15px, 3vw, 25px);
+	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+	background-color: rgba(255, 255, 255, 0.1);
+	backdrop-filter: blur(5px);
 }
 
-.description ol{
-	font-size: large;
+.description ol {
+	font-size: clamp(1rem, 2.5vw, 1.2rem);
+	line-height: 1.6;
+	text-align: left;
+	padding-left: 20px;
+	margin: 0;
+}
+
+.description li {
+	margin-bottom: 12px;
 }
 
 .hide {
 	display: none;
+}
+
+/*----------------------------------------------------------------------------------------------------------------------*/
+
+/*-------------------------------------------------- MEDIA QUERIES ----------------------------------------------------*/
+
+/* Tablets en orientación vertical */
+@media (max-width: 768px) {
+	body {
+		padding: 5px;
+	}
+
+	.card {
+		width: min(85vw, 280px);
+		height: min(60vh, 400px);
+	}
+
+	.description {
+		padding: 25px 20px;
+	}
+
+	.card-container {
+		padding: 15px;
+	}
+}
+
+/* Móviles */
+@media (max-width: 480px) {
+	body {
+		overflow-y: auto;
+	}
+
+	.card-container {
+		min-height: 100vh;
+		padding: 10px;
+		gap: 15px;
+	}
+
+	.card {
+		width: min(90vw, 250px);
+		height: min(50vh, 350px);
+	}
+
+	.description {
+		width: 95vw;
+		padding: 20px 15px;
+		margin: 10px;
+	}
+
+	.description ol {
+		padding-left: 15px;
+	}
+
+	h1 {
+		margin: 10px 5px;
+	}
+}
+
+/* Móviles muy pequeños */
+@media (max-width: 320px) {
+	.card {
+		width: 95vw;
+		height: min(45vh, 300px);
+	}
+
+	.card p {
+		font-size: clamp(2.5rem, 15vw, 4rem);
+	}
+
+	.card-top-symbol,
+	.card-bottom-symbol {
+		font-size: clamp(1.5rem, 10vw, 3rem);
+	}
+
+	.description {
+		padding: 15px 10px;
+	}
+}
+
+/* Orientación horizontal en móviles */
+@media (max-height: 500px) and (orientation: landscape) {
+	.card-container {
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+		gap: 30px;
+		padding: 10px;
+	}
+
+	.card {
+		width: min(40vw, 200px);
+		height: min(80vh, 300px);
+		flex-shrink: 0;
+	}
+
+	.description-container {
+		min-height: 100vh;
+		justify-content: flex-start;
+		padding-top: 20px;
+	}
+
+	.description {
+		max-height: 80vh;
+		overflow-y: auto;
+	}
+}
+
+/* Pantallas muy grandes */
+@media (min-width: 1200px) {
+	.card-container {
+		gap: 40px;
+	}
+
+	.card {
+		width: min(25vw, 400px);
+		height: min(60vh, 550px);
+	}
+
+	.description {
+		max-width: 900px;
+		padding: 50px 40px;
+	}
 }
